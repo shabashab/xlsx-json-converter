@@ -1,0 +1,15 @@
+{
+  "name": "xlsx-json-converter",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "shabashab <shabashab@ukr.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "run": "node dist/index",
+    "build-and-run": "tsc && node dist/index"
+  }
+}

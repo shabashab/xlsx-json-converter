@@ -11,5 +11,10 @@
     "build": "tsc",
     "run": "node dist/index",
     "build-and-run": "tsc && node dist/index"
+  },
+  "dependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "app-root-path": "^3.0.0",
+    "exceljs": "^4.2.1"
   }
 }

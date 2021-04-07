@@ -1,11 +1,21 @@
+import CellStyle from "./CellStyle";
+
 export default class CellModel {
   public value: string;
   public rowSpan: number;
   public columnSpan: number;
 
-  constructor(value: string, rowSpan: number, columnSpan: number) {
-    this.value = value;
-    this.rowSpan = rowSpan;
-    this.columnSpan = columnSpan;
+  public style: CellStyle;
+
+  constructor(
+    value?: string,
+    rowSpan?: number,
+    columnSpan?: number,
+    style?: CellStyle,
+  ) {
+    this.value = value || "";
+    this.rowSpan = rowSpan || 0;
+    this.columnSpan = columnSpan || 0;
+    this.style = style || new CellStyle();
   }
 }

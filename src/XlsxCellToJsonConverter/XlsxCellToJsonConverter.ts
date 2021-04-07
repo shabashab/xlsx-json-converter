@@ -6,6 +6,9 @@ import CellModel from "../Models/CellModel";
 export default class XlsxCellToJsonConverter
   implements IXlsxCellToJsonConverter {
   convert(cell: Cell): CellModel {
-    return new CellModel(cell.text, 0, 0);
+    let cellModel = new CellModel();
+    cellModel.value = cell.text;
+
+    return cellModel;
   }
 }

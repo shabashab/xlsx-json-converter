@@ -1,9 +1,8 @@
 import IXlsxWorkbookProvider from "./IXlsxWorkbookProvider";
-import IFilePathResolver from "../IFilePathResolver";
-import {Workbook} from "exceljs";
+import IFilePathResolver from "../FilePathResolver/IFilePathResolver";
+import { Workbook } from "exceljs";
 
 export default class FileXlsxWorkbookProvider implements IXlsxWorkbookProvider {
-
   private readonly _fileName: string;
   private readonly _filePathResolver: IFilePathResolver;
 
@@ -13,9 +12,9 @@ export default class FileXlsxWorkbookProvider implements IXlsxWorkbookProvider {
   }
 
   async getWorkbook(): Promise<Workbook> {
-    let workbook  = new Workbook();
-    let filePath = this._filePathResolver.resolve(this._fileName);
+    const workbook = new Workbook();
+    const filePath = this._filePathResolver.resolve(this._fileName);
     await workbook.xlsx.readFile(filePath);
-    return workbook
+    return workbook;
   }
 }

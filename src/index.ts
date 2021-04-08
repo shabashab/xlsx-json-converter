@@ -1,29 +1,26 @@
-import XlsxWorkbookToJsonConverter from "./XlsxWorkbookToJsonConverter/XlsxWorkbookToJsonConverter";
-import XlsxWorksheetToJsonConverter from "./XlsxWorksheetToJsonConverter/XlsxWorksheetToJsonConverter";
-import XlsxRowToJsonConverter from "./XlsxRowToJsonConverter/XlsxRowToJsonConverter";
-import XlsxTableMarkupParser from "./XlsxTableMarkupParser/XlsxTableMarkupParser";
-import XlsxCellToJsonConverter from "./XlsxCellToJsonConverter/XlsxCellToJsonConverter";
-
 import FileXlsxWorkbookProvider from "./XlsxWorkbookProviders/FileXlsxWorkbookProvider";
+
+import WorkbookParser from "./Parsers/WorkbookParser";
+import WorksheetParser from "./Parsers/WorksheetParser";
+import RowParser from "./Parsers/RowParser";
+import CellParser from "./Parsers/CellParser";
+import WorksheetMarkupParser from "./Parsers/WorksheetMarkupParser";
 import FilePathResolver from "./FilePathResolver/FilePathResolver";
 
-let markupParser = new XlsxTableMarkupParser();
-let cellConverter = new XlsxCellToJsonConverter();
-let rowConverter = new XlsxRowToJsonConverter(cellConverter);
-let worksheetConverter = new XlsxWorksheetToJsonConverter(
-  rowConverter,
-  markupParser,
-);
-let workbookConverter = new XlsxWorkbookToJsonConverter(worksheetConverter);
+let cellParser = new CellParser();
+let rowParser = new RowParser(cellParser);
+let markupParser = new WorksheetMarkupParser();
+let worksheetParser = new WorksheetParser(rowParser, markupParser);
+let workbookParser = new WorkbookParser(worksheetParser);
 
 let workbookProvider = new FileXlsxWorkbookProvider(
-  "file2.xlsx",
+  "file.xlsx",
   new FilePathResolver(),
 );
 
 async function run() {
   let workbook = await workbookProvider.getWorkbook();
-  let workbookModel = workbookConverter.convert(workbook);
+  let workbookModel = workbookParser.parse(workbook);
   console.log(workbookModel);
 }
 

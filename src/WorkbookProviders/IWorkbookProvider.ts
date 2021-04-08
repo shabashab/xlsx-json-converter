@@ -1,5 +1,5 @@
 import { Workbook } from "exceljs";
 
-export default interface IXlsxWorkbookProvider {
+export default interface IWorkbookProvider {
   getWorkbook(): Promise<Workbook>;
 }

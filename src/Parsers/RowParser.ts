@@ -14,7 +14,7 @@ export default class RowParser implements IRowParser {
     let rowModel = new RowModel();
 
     row.eachCell((cell) => {
-      let columnNum = parseInt(cell.col);
+      let columnNum = parseInt(cell.col) - 1;
       if (cell.isMerged && cell.master !== cell) return;
 
       let cellModel = this._cellParser.parse(cell);

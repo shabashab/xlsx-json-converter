@@ -1,16 +1,21 @@
 import ICellStyleParser from "./Interfaces/ICellStyleParser";
+import indexedColors from "xlsx-indexed-colors";
 
 import { Cell, Border as EJSBorder } from "exceljs";
 import { CellStyle, Border, BorderPart } from "xlsx-model";
 
 export default class CellStyleParser implements ICellStyleParser {
   private static parseFillColor(cell: Cell): string | undefined {
-    if (cell.style.fill?.type == "pattern") {
-      let cellFill = cell.style.fill;
-
-      if (cellFill.pattern == "solid") {
-        return cellFill.bgColor?.argb;
+    if (
+      cell.style.fill?.type === "pattern" &&
+      cell.style.fill.pattern !== "none"
+    ) {
+      if ((cell.style.fill.fgColor as any).hasOwnProperty("indexed")) {
+        let indexedColorIndex = (cell.style.fill.fgColor as any)["indexed"];
+        if (Math.min(indexedColorIndex, indexedColors.length - 1))
+          return indexedColors[indexedColorIndex];
       }
+      return cell.style.fill.bgColor?.argb;
     }
     return undefined;
   }
@@ -43,6 +48,8 @@ export default class CellStyleParser implements ICellStyleParser {
 
   private static parseBorder(cell: Cell): Border {
     let border = new Border();
+
+    if (!cell.border) return border;
 
     border.left = CellStyleParser.parseBorderPart(cell.border.left);
     border.right = CellStyleParser.parseBorderPart(cell.border.right);

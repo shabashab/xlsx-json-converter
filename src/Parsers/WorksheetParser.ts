@@ -4,14 +4,21 @@ import { RowModel, WorksheetModel } from "xlsx-model";
 import IRowParser from "./Interfaces/IRowParser";
 import IWorksheetMarkupParser from "./Interfaces/IWorksheetMarkupParser";
 import { Dictionary } from "typescript-collections";
+import IWorksheetMergesParser from "./Interfaces/IWorksheetMergesParser";
 
 export default class WorksheetParser implements IWorksheetParser {
   private _rowParser: IRowParser;
   private _markupParser: IWorksheetMarkupParser;
+  private _mergesParser: IWorksheetMergesParser;
 
-  constructor(rowParser: IRowParser, markupParser: IWorksheetMarkupParser) {
+  constructor(
+    rowParser: IRowParser,
+    markupParser: IWorksheetMarkupParser,
+    mergesParser: IWorksheetMergesParser,
+  ) {
     this._rowParser = rowParser;
     this._markupParser = markupParser;
+    this._mergesParser = mergesParser;
   }
 
   private parseRows(worksheet: Worksheet): Dictionary<number, RowModel> {
@@ -31,6 +38,11 @@ export default class WorksheetParser implements IWorksheetParser {
     let markup = this._markupParser.parse(worksheet);
     let name = worksheet.name;
 
-    return new WorksheetModel(markup, rows, name);
+    let worksheetModel = new WorksheetModel(markup, rows, name);
+
+    worksheetModel =
+      this._mergesParser.parse(worksheet, worksheetModel) || worksheetModel;
+
+    return worksheetModel;
   }
 }

@@ -1,6 +1,6 @@
 import IWorkbookParser from "./Interfaces/IWorkbookParser";
 import { Workbook } from "exceljs";
-import { WorkbookModel } from "xlsx-model";
+import { WorkbookModel } from "@xlsx-model/models";
 import IWorksheetParser from "./Interfaces/IWorksheetParser";
 
 export default class WorkbookParser implements IWorkbookParser {

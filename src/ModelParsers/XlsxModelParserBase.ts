@@ -1,4 +1,4 @@
-import { WorkbookModel } from "xlsx-model";
+import { WorkbookModel } from "@xlsx-model/models";
 import IWorkbookProvider from "../WorkbookProviders/IWorkbookProvider";
 import IXlsxModelParser from "./IXlsxModelParser";
 import IWorkbookParser from "../Parsers/Interfaces/IWorkbookParser";

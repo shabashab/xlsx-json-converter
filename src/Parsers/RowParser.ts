@@ -1,6 +1,6 @@
 import IRowParser from "./Interfaces/IRowParser";
 import { Row } from "exceljs";
-import { RowModel } from "xlsx-model";
+import { RowModel } from "@xlsx-model/models";
 import ICellParser from "./Interfaces/ICellParser";
 
 export default class RowParser implements IRowParser {

@@ -1,6 +1,6 @@
 {
-  "name": "xlsx-model-parser",
-  "version": "0.0.1",
+  "name": "@xlsx-model/parser",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "shabashab",
@@ -9,18 +9,22 @@
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   },
+  "repository": {
+    "url": "https://github.com/shabashab/xlsx-model-parser"
+  },
+  "files": [
+    "./dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
-    "run": "node dist/index",
-    "build-and-run": "tsc && node dist/index",
     "prepublishOnly": "tsc --project tsconfig.release.json"
   },
   "dependencies": {
     "@types/app-root-path": "^1.2.4",
+    "@xlsx-model/models": "^1.0.0",
     "app-root-path": "^3.0.0",
     "exceljs": "^4.2.1",
     "typescript-collections": "^1.3.3",
-    "xlsx-indexed-colors": "^1.0.2",
-    "xlsx-model": "^1.0.4"
+    "xlsx-indexed-colors": "^1.0.2"
   }
 }

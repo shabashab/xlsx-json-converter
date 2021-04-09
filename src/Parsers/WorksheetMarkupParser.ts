@@ -1,6 +1,6 @@
 import IWorksheetMarkupParser from "./Interfaces/IWorksheetMarkupParser";
 import { Worksheet } from "exceljs";
-import { ColumnMarkup, RowMarkup, TableMarkup } from "xlsx-model";
+import { ColumnMarkup, RowMarkup, TableMarkup } from "@xlsx-model/models";
 import { Dictionary } from "typescript-collections";
 
 export default class WorksheetMarkupParser implements IWorksheetMarkupParser {

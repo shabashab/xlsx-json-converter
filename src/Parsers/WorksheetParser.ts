@@ -1,6 +1,6 @@
 import IWorksheetParser from "./Interfaces/IWorksheetParser";
 import { Worksheet } from "exceljs";
-import { RowModel, WorksheetModel } from "xlsx-model";
+import { RowModel, WorksheetModel } from "@xlsx-model/models";
 import IRowParser from "./Interfaces/IRowParser";
 import IWorksheetMarkupParser from "./Interfaces/IWorksheetMarkupParser";
 import { Dictionary } from "typescript-collections";

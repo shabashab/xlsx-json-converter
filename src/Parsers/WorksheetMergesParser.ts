@@ -1,6 +1,6 @@
 import IWorksheetMergesParser from "./Interfaces/IWorksheetMergesParser";
 import { Worksheet } from "exceljs";
-import { CellModel, RowModel, WorksheetModel } from "xlsx-model";
+import { CellModel, RowModel, WorksheetModel } from "@xlsx-model/models";
 
 type CellAddress = {
   rowId: number;

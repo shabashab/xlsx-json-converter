@@ -1,5 +1,5 @@
 import ICellStyleParser from "./Interfaces/ICellStyleParser";
-import indexedColors from "xlsx-indexed-colors";
+import indexedColors from "@xlsx-model/indexed-colors";
 
 import { Cell, Border as EJSBorder } from "exceljs";
 import { CellStyle, Border, BorderPart } from "@xlsx-model/models";

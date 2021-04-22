@@ -14,7 +14,12 @@ export default class RowParser implements IRowParser {
     let rowModel = new RowModel();
 
     row.eachCell((cell) => {
+      if (cell.worksheet.getColumn(cell.col).hidden) {
+        return;
+      }
+
       let columnNum = parseInt(cell.col) - 1;
+      if (columnNum == 0) console.log(cell.worksheet.getColumn(cell.col));
       if (cell.isMerged && cell.master !== cell) return;
 
       let cellModel = this._cellParser.parse(cell);

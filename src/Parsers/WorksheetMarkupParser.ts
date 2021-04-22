@@ -4,10 +4,18 @@ import { ColumnMarkup, RowMarkup, TableMarkup } from "@xlsx-model/models";
 import { Dictionary } from "typescript-collections";
 
 export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
-  private parseRowsMarkup(worksheet: Worksheet): Dictionary<number, RowMarkup> {
+  private parseRowsMarkup(
+    worksheet: Worksheet,
+  ): [Dictionary<number, RowMarkup>, number] {
     let rowsMarkup = new Dictionary<number, RowMarkup>();
+    let rowsCount = worksheet.dimensions.right;
 
     worksheet.eachRow((row) => {
+      if (row.hidden) {
+        rowsCount--;
+        return;
+      }
+
       let rowId = row.number - 1;
 
       let height = row.height;
@@ -18,16 +26,22 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
       rowsMarkup.setValue(rowId, rowMarkup);
     });
 
-    return rowsMarkup;
+    return [rowsMarkup, rowsCount];
   }
 
   private parseColumnsMarkup(
     worksheet: Worksheet,
-  ): Dictionary<number, ColumnMarkup> {
+  ): [Dictionary<number, ColumnMarkup>, number] {
     let columnsMarkup = new Dictionary<number, ColumnMarkup>();
+    let columnsCount = worksheet.dimensions.bottom;
 
     worksheet.columns.forEach((column) => {
       if (typeof column.number === "undefined") return;
+      if (column.hidden) {
+        columnsCount--;
+        return;
+      }
+
       let columnId: number = column.number;
 
       let width = column.width;
@@ -38,13 +52,13 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
       columnsMarkup.setValue(columnId, columnMarkup);
     });
 
-    return columnsMarkup;
+    return [columnsMarkup, columnsCount];
   }
 
   parse(worksheet: Worksheet): TableMarkup {
-    let rowsMarkup = this.parseRowsMarkup(worksheet);
-    let columnsMarkup = this.parseColumnsMarkup(worksheet);
+    const [rowsMarkup, rowsCount] = this.parseRowsMarkup(worksheet);
+    const [columnsMarkup, columnsCount] = this.parseColumnsMarkup(worksheet);
 
-    return new TableMarkup(rowsMarkup, columnsMarkup);
+    return new TableMarkup(rowsMarkup, columnsMarkup, rowsCount, columnsCount);
   }
 }

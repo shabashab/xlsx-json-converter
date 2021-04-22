@@ -11,8 +11,10 @@ export default class CellParser implements ICellParser {
     this._styleParser = styleParser;
   }
 
-  parse(cell: Cell): CellModel {
+  parse(cell?: Cell): CellModel {
     let cellModel = new CellModel();
+
+    if (!cell) return cellModel;
 
     cellModel.value = cell.text;
     cellModel.rowSpan = 1;

@@ -13,18 +13,21 @@ export default class RowParser implements IRowParser {
   parse(row: Row): RowModel {
     let rowModel = new RowModel();
 
-    row.eachCell((cell) => {
-      if (cell.worksheet.getColumn(cell.col).hidden) {
-        return;
+    const dimensions = row.worksheet.dimensions;
+
+    for (let i = 0; i < dimensions.right; i++) {
+      const cell = row.findCell(i + 1);
+      if (!cell) {
+        const cellModel = this._cellParser.parse();
+        rowModel.cells.setValue(i, cellModel);
+        continue;
       }
 
-      let columnNum = parseInt(cell.col) - 1;
-      if (cell.isMerged && cell.master !== cell) return;
+      if (cell.isMerged && cell.master !== cell) continue;
 
-      let cellModel = this._cellParser.parse(cell);
-
-      rowModel.cells.setValue(columnNum, cellModel);
-    });
+      const cellModel = this._cellParser.parse(cell);
+      rowModel.cells.setValue(i, cellModel);
+    }
 
     return rowModel;
   }

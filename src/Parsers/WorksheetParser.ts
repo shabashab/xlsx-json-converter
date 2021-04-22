@@ -25,8 +25,6 @@ export default class WorksheetParser implements IWorksheetParser {
     let rows = new Dictionary<number, RowModel>();
 
     worksheet.eachRow((row) => {
-      if (row.hidden) return;
-
       let rowId = row.number - 1;
       let rowModel = this._rowParser.parse(row);
       rows.setValue(rowId, rowModel);

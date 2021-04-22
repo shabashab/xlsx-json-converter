@@ -8,7 +8,7 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
     worksheet: Worksheet,
   ): [Dictionary<number, RowMarkup>, number] {
     let rowsMarkup = new Dictionary<number, RowMarkup>();
-    let rowsCount = worksheet.dimensions.right;
+    let rowsCount = worksheet.dimensions.bottom;
 
     worksheet.eachRow((row) => {
       if (row.hidden) {
@@ -33,7 +33,7 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
     worksheet: Worksheet,
   ): [Dictionary<number, ColumnMarkup>, number] {
     let columnsMarkup = new Dictionary<number, ColumnMarkup>();
-    let columnsCount = worksheet.dimensions.bottom;
+    let columnsCount = worksheet.dimensions.right;
 
     worksheet.columns.forEach((column) => {
       if (typeof column.number === "undefined") return;

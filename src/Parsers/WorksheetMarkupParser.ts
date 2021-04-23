@@ -11,11 +11,6 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
     let rowsCount = worksheet.dimensions.bottom;
 
     worksheet.eachRow((row) => {
-      if (row.hidden) {
-        rowsCount--;
-        return;
-      }
-
       let rowId = row.number - 1;
 
       let height = row.height;
@@ -37,11 +32,6 @@ export default class WorksheetMarkupParser implements IWorksheetMarkupParser {
 
     worksheet.columns.forEach((column) => {
       if (typeof column.number === "undefined") return;
-      if (column.hidden) {
-        columnsCount--;
-        return;
-      }
-
       let columnId: number = column.number;
 
       let width = column.width;

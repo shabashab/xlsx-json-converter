@@ -1,5 +1,5 @@
 import IWorksheetMarkupParser from "./Interfaces/IWorksheetMarkupParser";
-import { Worksheet } from "@shabashab/exceljs";
+import { Worksheet } from "@xlsx-model/excel";
 import { ColumnMarkup, RowMarkup, TableMarkup } from "@xlsx-model/models";
 import { Dictionary } from "typescript-collections";
 

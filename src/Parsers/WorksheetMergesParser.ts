@@ -1,5 +1,5 @@
 import IWorksheetMergesParser from "./Interfaces/IWorksheetMergesParser";
-import { Worksheet } from "@shabashab/exceljs";
+import { Worksheet } from "@xlsx-model/excel";
 import { CellModel, RowModel, WorksheetModel } from "@xlsx-model/models";
 
 type CellAddress = {

@@ -20,8 +20,8 @@
     "prepublishOnly": "tsc --project tsconfig.release.json"
   },
   "dependencies": {
-    "@shabashab/exceljs": "https://github.com/shabashab/exceljs",
     "@types/app-root-path": "^1.2.4",
+    "@xlsx-model/excel": "^4.3.0",
     "@xlsx-model/indexed-colors": "^1.0.0",
     "@xlsx-model/models": "^1.1.0",
     "app-root-path": "^3.0.0",

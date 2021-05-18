@@ -1,4 +1,4 @@
-import { Worksheet } from "@shabashab/exceljs";
+import { Worksheet } from "@xlsx-model/excel";
 import { TableMarkup } from "@xlsx-model/models";
 
 export default interface IWorksheetMarkupParser {

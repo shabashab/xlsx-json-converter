@@ -1,5 +1,5 @@
 import IWorkbookProvider from "./IWorkbookProvider";
-import { Workbook } from "@shabashab/exceljs";
+import { Workbook } from "@xlsx-model/excel";
 import * as Stream from "stream";
 
 export default class StreamWorkbookProvider implements IWorkbookProvider {

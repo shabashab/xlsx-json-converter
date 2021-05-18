@@ -1,7 +1,7 @@
 import ICellStyleParser from "./Interfaces/ICellStyleParser";
 import indexedColors from "@xlsx-model/indexed-colors";
 
-import { Cell, Border as EJSBorder } from "@shabashab/exceljs";
+import { Cell, Border as EJSBorder } from "@xlsx-model/excel";
 import { CellStyle, Border, BorderPart } from "@xlsx-model/models";
 
 export default class CellStyleParser implements ICellStyleParser {

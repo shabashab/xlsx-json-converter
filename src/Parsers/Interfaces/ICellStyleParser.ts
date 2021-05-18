@@ -1,4 +1,4 @@
-import { Cell } from "@shabashab/exceljs";
+import { Cell } from "@xlsx-model/excel";
 import { CellStyle } from "@xlsx-model/models";
 
 export default interface ICellStyleParser {

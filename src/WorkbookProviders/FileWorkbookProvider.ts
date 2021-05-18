@@ -1,5 +1,5 @@
 import IWorkbookProvider from "./IWorkbookProvider";
-import { Workbook } from "exceljs";
+import { Workbook } from "@shabashab/exceljs";
 
 export default class FileWorkbookProvider implements IWorkbookProvider {
   private readonly _fileName: string;

@@ -1,4 +1,4 @@
-import { Workbook } from "exceljs";
+import { Workbook } from "@shabashab/exceljs";
 import { WorkbookModel } from "@xlsx-model/models";
 
 export default interface IWorkbookParser {

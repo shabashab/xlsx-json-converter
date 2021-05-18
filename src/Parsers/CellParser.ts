@@ -1,6 +1,6 @@
 import ICellParser from "./Interfaces/ICellParser";
 
-import { Cell } from "exceljs";
+import { Cell } from "@shabashab/exceljs";
 import { CellModel } from "@xlsx-model/models";
 import ICellStyleParser from "./Interfaces/ICellStyleParser";
 

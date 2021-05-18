@@ -1,5 +1,5 @@
 import IRowParser from "./Interfaces/IRowParser";
-import { Row } from "exceljs";
+import { Row } from "@shabashab/exceljs";
 import { RowModel } from "@xlsx-model/models";
 import ICellParser from "./Interfaces/ICellParser";
 

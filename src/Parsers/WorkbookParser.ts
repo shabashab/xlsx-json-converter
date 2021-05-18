@@ -1,5 +1,5 @@
 import IWorkbookParser from "./Interfaces/IWorkbookParser";
-import { Workbook } from "exceljs";
+import { Workbook } from "@shabashab/exceljs";
 import { WorkbookModel } from "@xlsx-model/models";
 import IWorksheetParser from "./Interfaces/IWorksheetParser";
 

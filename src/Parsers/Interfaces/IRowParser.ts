@@ -1,4 +1,4 @@
-import { Row } from "exceljs";
+import { Row } from "@shabashab/exceljs";
 import { RowModel } from "@xlsx-model/models";
 
 export default interface IRowParser {

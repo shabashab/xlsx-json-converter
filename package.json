@@ -1,6 +1,6 @@
 {
   "name": "@xlsx-model/xlsx-parser",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "shabashab",
@@ -20,7 +20,7 @@
     "prepublishOnly": "tsc --project tsconfig.release.json"
   },
   "dependencies": {
-    "@shabashab/exceljs": "^4.2.2",
+    "@shabashab/exceljs": "^4.2.3",
     "@types/app-root-path": "^1.2.4",
     "@xlsx-model/indexed-colors": "^1.0.0",
     "@xlsx-model/models": "^1.1.0",

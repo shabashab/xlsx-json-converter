@@ -15,7 +15,7 @@ export default class CellStyleParser implements ICellStyleParser {
         if (Math.min(indexedColorIndex, indexedColors.length - 1))
           return indexedColors[indexedColorIndex];
       }
-      return cell.style.fill.fgColor?.argb;
+      return "#" + cell.style.fill.fgColor?.argb;
     }
     return undefined;
   }

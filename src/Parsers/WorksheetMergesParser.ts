@@ -13,7 +13,7 @@ export default class WorksheetMergesParser implements IWorksheetMergesParser {
     let result = 0;
 
     do {
-      result += columnName.charCodeAt(nameLength) - 65;
+      result += columnName.charCodeAt(nameLength) - 65 + 26 * nameLength;
     } while (nameLength--);
     return result;
   }
@@ -30,6 +30,7 @@ export default class WorksheetMergesParser implements IWorksheetMergesParser {
     let columnId = WorksheetMergesParser.parseColumnId(columnMatch);
     let rowId = parseInt(rowMatch) - 1;
 
+    console.log(address, columnId, rowId);
     return { columnId, rowId };
   }
 
@@ -56,6 +57,8 @@ export default class WorksheetMergesParser implements IWorksheetMergesParser {
 
     if (!worksheetModel.hasOwnProperty("merges")) return undefined;
     let merges: Array<string> = worksheetModel["merges"];
+
+    console.log(merges);
 
     merges.forEach((merge) => {
       let [mergeStart, mergeEnd] = WorksheetMergesParser.parseRange(merge);
